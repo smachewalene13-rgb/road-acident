@@ -387,12 +387,17 @@ def internal_error(error):
 
 # ==================== MAIN ====================
 
+# ==================== MAIN ====================
+
 if __name__ == '__main__':
+    import os
+    
     print("\n" + "="*60)
     print("🚗 Road Accident Prediction System")
     print("="*60)
-    print(f"📍 Backend Server: http://localhost:5000")
-    print(f"📡 API Health: http://localhost:5000/api/health")
+    print(f"📍 Backend Server: http://0.0.0.0:{os.environ.get('PORT', 5000)}")
+    print(f"📡 API Health: http://0.0.0.0:{os.environ.get('PORT', 5000)}/api/health")
     print("="*60 + "\n")
     
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
